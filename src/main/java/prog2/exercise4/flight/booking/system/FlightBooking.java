@@ -1,7 +1,7 @@
 package prog2.exercise4.flight.booking.system;
 import java.time.LocalDate;
 public class FlightBooking {
-    private String TripSource;
+
     private String BookingClass;
     private String passengerFullName;
     private String sourceAirport;
@@ -16,6 +16,8 @@ public class FlightBooking {
     private int totalPassengers;
     private double departingTicketPrice;
     private double totalTicketPrice;
+    private TripSource TripSource;
+
     public FlightBooking(String aNull, LocalDate depart, LocalDate returnDate, int i, int i1) {
         this.passengerFullName = aNull;
         this.departureDate = depart;
@@ -55,12 +57,12 @@ public class FlightBooking {
         }
     }
 
-    public FlightBooking.TripSource getTripSource() {
+    public TripSource getTripSource() {
         return TripSource;
     }
 
-    public void setTripSource(String tripSource) {
-        TripSource = tripSource;
+    public void setTripSource(String TripSource) {
+        TripSource = TripSource;
     }
 
     public String getFlightCompany() {
