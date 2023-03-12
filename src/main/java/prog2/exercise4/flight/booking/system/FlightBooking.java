@@ -1,7 +1,7 @@
 package prog2.exercise4.flight.booking.system;
 import java.time.LocalDate;
 public class FlightBooking {
-    private static String TripSource;
+    private String TripSource;
     private String BookingClass;
     private String passengerFullName;
     private String sourceAirport;
@@ -29,7 +29,8 @@ public class FlightBooking {
         {
             TripType = "Oneway";
         }
-        if (b == 2){
+        if (b == 2)
+        {
             TripType="return";
         }
     }
@@ -47,20 +48,19 @@ public class FlightBooking {
             BookingClass = "First";
         }
         if (a == 2){
-            BookingClass ="Bussiness";
+            BookingClass ="Business";
         }
         if (a == 3){
             BookingClass= "Economy";
         }
     }
 
-    public String getTripSource() {
-        String tripSource = TripSource;
-        return tripSource;
+    public FlightBooking.TripSource getTripSource() {
+        return TripSource;
     }
 
     public void setTripSource(String tripSource) {
-        this.TripSource = tripSource;
+        TripSource = tripSource;
     }
 
     public String getFlightCompany() {
@@ -211,25 +211,56 @@ public class FlightBooking {
         public static final FlightBooking.TripSource OULU= null;
         public static final FlightBooking.TripSource HELSINKI = null;
         public static final FlightBooking.TripSource PARIS = null;
-        
-        
+    }
+    public enum tripDestination{
+        ;
+        public static final FlightBooking.tripDestination NANJING = null;
+        public static final FlightBooking.tripDestination BEIJING= null;
+        public static final FlightBooking.tripDestination SHANGHAI = null;
+        public static final FlightBooking.tripDestination OULU = null;
+        public static final FlightBooking.tripDestination HELSINKI = null;
+        public static final FlightBooking.tripDestination PARIS = null;
+
     }
 
     public enum BookingClass {
-        ;
+        FIRST(1,"First"),
+        BUSNIESS(2,"Busniss"),
+        ECOMOY(3,"Ecomoy");
 
-        public static final FlightBooking.BookingClass FIRST = null;
+
+        BookingClass(int choice, String push) {
+            this.choice = choice;
+            this.push=push;
+        }
+        int choice;
+        String push;
+
+        public int getChoice() {
+            return choice;
+        }
+
+        public String getPush() {
+            return push;
+        }
     }
 
-    public interface TripDestination {
-
-        TripDestination BEIJING = null;
+    public enum TripType {
+        RETURN(1,"return"),
+        ONE_WAY(2,"one way");
+        TripType(int choice1,String push1){
+            this.choice1 = choice1;
+            this.push1 = push1;
+        }
+        int choice1;
+        String push1;
     }
 
-    public interface TripType {
-        FlightBooking.TripType ONE_WAY = null;
-
-        FlightBooking.TripType RETURN = null;
+    public enum TripDestination {
+        NANJING, BEIJING, Shanghai, Oulu, Helsinki,  Paris;
     }
 }
+
+
+
 

@@ -16,7 +16,7 @@ public class Main
         LocalDate depart = LocalDate.parse(sdepart);
         String sreturn = "2023-03-14";
         LocalDate returnDate = LocalDate.parse(sreturn);
-        String random = "FOF"+Math.random();// flightID
+        String random = "FOF"+Math.random();
         String substring = random.substring(random.length()-4);
         String sourceAirport = "NANJING LUKOU \n" +
                 "INTERNATIONAL AIRPORT";
@@ -25,6 +25,38 @@ public class Main
         int expResult = 4;
         a.setTotalPassengers(1,3);
         int result = a.getTotalPassengers();
+        FlightBooking fb = new FlightBooking(null, null, null, 0, 0);
+
+        FlightBooking.TripSource source = FlightBooking.TripSource.NANJING;
+        FlightBooking.TripDestination destination = FlightBooking.TripDestination.BEIJING;
+
+        FlightBooking.TripType type = FlightBooking.TripType.ONE_WAY;
+
+        FlightBooking.BookingClass bookClass = FlightBooking.BookingClass.FIRST;
+
+        fb.setTripSource("1");
+        fb.setTripDestination("1", "2");
+
+        fb.setTripType("1");
+        fb.setBookingClass("1");
+
+        String expectedTicketNumber = "11FASDFDOM";
+
+        String expectedSubstring1 = expectedTicketNumber.substring(0,2);
+        String expectedSubstring2 = expectedTicketNumber.substring(7, 9);
+
+        String ticketNumber = fb.getTicketNumber();
+
+        String returnedSubstring1 = ticketNumber.substring(0, 2);
+
+        String returnedSubstring2 = ticketNumber.substring(7, 9);
+
+        if(expectedSubstring1.equals(returnedSubstring1) && expectedSubstring2.equals(returnedSubstring2)){
+            assertEquals(1,1);
+        }
+        else {
+            assertEquals(1,2);
+        }
         a.setPassengerFullName("Kehan");
         a.setTicketNumber("HT2514875");
         a.setTripSource("NanJing") ;
@@ -45,7 +77,10 @@ public class Main
                 "Total passengers: " + a.getTotalPassengers() + "\n" +
                 "Total ticket price in Euros: " + a.getTotalTicketPrice());
     }
-        
-        
+
+    private static void assertEquals(int i, int i1) {
     }
+
+
+}
 
