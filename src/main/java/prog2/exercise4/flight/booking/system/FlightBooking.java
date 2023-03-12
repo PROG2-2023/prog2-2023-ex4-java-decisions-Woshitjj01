@@ -6,7 +6,6 @@ public class FlightBooking {
     private String passengerFullName;
     private String sourceAirport;
     private String FlightCompany;
-    private String tripDestination;
     private String destinationAirport;
     private String TripType;
     private LocalDate departureDate;
@@ -17,6 +16,7 @@ public class FlightBooking {
     private double departingTicketPrice;
     private double totalTicketPrice;
     private TripSource TripSource;
+    private TripDestination TripDestination;
 
     public FlightBooking(String aNull, LocalDate depart, LocalDate returnDate, int i, int i1) {
         this.passengerFullName = aNull;
@@ -91,12 +91,12 @@ public class FlightBooking {
         this.sourceAirport = sourceAirport;
     }
 
-    public String getTripDestination() {
-        return tripDestination;
+    public TripDestination getTripDestination() {
+        return TripDestination;
     }
 
     public void setTripDestination(String tripDestination) {
-        this.tripDestination = tripDestination;
+        TripDestination = TripDestination;
     }
 
     public String getDestinationAirport() {
@@ -175,7 +175,7 @@ public class FlightBooking {
         return "Dear " + passengerFullName + ". Thank you for booking your flight with " +
                 FlightCompany + ". \nFollowing are the details of your booking and the trip:" + "\n" +
                 "Ticket Number: " + ticketNumber + "\n" +
-                "From " + TripSource + " to " + tripDestination + "\n" +
+                "From " + TripSource + " to " + TripDestination + "\n" +
                 "Date of departure: " +departureDate + "\n" +
                 "Date of return: " + returnDate + "\n" +
                 "Total passengers: " + totalPassengers + "\n" +
@@ -214,16 +214,7 @@ public class FlightBooking {
         public static final FlightBooking.TripSource HELSINKI = null;
         public static final FlightBooking.TripSource PARIS = null;
     }
-    public enum tripDestination{
-        ;
-        public static final FlightBooking.tripDestination NANJING = null;
-        public static final FlightBooking.tripDestination BEIJING= null;
-        public static final FlightBooking.tripDestination SHANGHAI = null;
-        public static final FlightBooking.tripDestination OULU = null;
-        public static final FlightBooking.tripDestination HELSINKI = null;
-        public static final FlightBooking.tripDestination PARIS = null;
 
-    }
 
     public enum BookingClass {
         FIRST(1,"First"),
