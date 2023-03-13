@@ -1,14 +1,16 @@
 package prog2.exercise4.flight.booking.system;
 import java.io.File;
 import java.time.LocalDate;
+
 public class FlightBooking<BookingLevel, DepartureDate> {
 
+    private static final Object ONE_WAY =null ;
     private String BookingClass;
     private String passengerFullName;
     private String sourceAirport;
     private String FlightCompany;
     private String destinationAirport;
-    private String TripType;
+    private static String TripType;
     private LocalDate returnDate;
     private int childPassengers;
     private int adultPassengers;
@@ -35,42 +37,49 @@ public class FlightBooking<BookingLevel, DepartureDate> {
         return null;
     }
 
+    public void setBookingClass(String s) {
+    }
+
+    public void setTripType(String s) {
+    }
+
     enum TripType {
-        ONE_WAY("One way"), RETURN("Return");
+        ONE_WAY("One way"),
+        RETURN("Return");
 
         public final String label;
-
         TripType(String label) {
-            this.label = label;
-        }
+            this.label = label;}
+    }
+
+
+    private TripSource tripSource;
+    private String origin;
+    private String destination;
+    private LocalDate departureDate;
+    private String flightNumber;
+    private int passengerCount;
+    private BookingLevel bookingLevel;
+    private BookingClass bookingClass;
+    private TripType tripType; // 修改为 TripType 类型
+
+    // Getters and Setters
+    //public void setTripType(String choice) {
+       // if (choice.equals("1")) {
+          //  this.tripType = TripType.ONE_WAY; // 修改为 ONE_WAY
+       // } else if (choice.equals("2")) {
+         //   this.tripType = TripType.RETURN;
+      //  } else {
+         //   throw new IllegalArgumentException("Invalid trip type choice!");
+       // }
+  //  }
+
+    public TripType getTripType() { // 修改为 TripType 类型
+        return this.tripType; // 修改为返回 this.tripType
     }
 
 
         private TripSource TripSource;
-        private String origin;
-        private String destination;
-        private LocalDate departureDate;
-        private String flightNumber;
-        private int passengerCount;
-        private BookingLevel bookingLevel;
-        private BookingClass bookingClass;
-        private TripType tripType;
-
-        // Getters and Setters
-
-        public void setTripType(String choice) {
-            if (choice.equals("1")) {
-                this.tripType = TripType.ONE_WAY;
-            } else if (choice.equals("2")) {
-                this.tripType = TripType.RETURN;
-            } else {
-                throw new IllegalArgumentException("Invalid trip type choice!");
-            }
-        }
-
-        public TripType getTripType() {
-            return tripType;
-        }
 
     
 
@@ -228,42 +237,39 @@ public class FlightBooking<BookingLevel, DepartureDate> {
         Paris;
 
     }
-    enum BookingClass {
-        FIRST("First"), BUSINESS("Business"), ECONOMY("Economy");
-
+    enum BookingClass { 
+        FIRST("First"),
+        BUSINESS("Business"),
+        ECONOMY("Economy");
         public final String label;
-
-        BookingClass(String label) {
+        BookingClass(String label) { 
             this.label = label;
-        }
-    }
-
+        }     } 
     public static class TripSource {
         public static final FlightBooking.TripSource NANJING = null;
-        public static final FlightBooking.TripSource BEIJING = null;
+        public static final FlightBooking.TripSource BEIJING = null; 
+        public static long valueOf(String nanjing) {  
+            return 0;        
+        }   
+    }        
+    // Getters and Setters  
+    // public void setBookingClass(String choice)
+    // {             if (choice.equals("1")) {  
+    // this.bookingClass = BookingClass.FIEST;             }
+    // else if (choice.equals("2")) 
+    // {
+    // this.bookingClass = BookingClass.BUSINESS;
+    // } else if (choice.equals("3")) { 
+    // this.bookingClass = BookingClass.ECONOMY;
+    // } else { 
+    // throw new IllegalArgumentException("Invalid booking class choice!");
+    // }  
+    // }       
+    // public BookingClass getBookingClass() { 
+    // return bookingClass;   
+    // }
 
-        public static long valueOf(String nanjing) {
-            return 0;
-        }
-    }
-        // Getters and Setters
-
-        public void setBookingClass(String choice) {
-            if (choice.equals("1")) {
-                this.bookingClass = BookingClass.FIRST;
-            } else if (choice.equals("2")) {
-                this.bookingClass = BookingClass.BUSINESS;
-            } else if (choice.equals("3")) {
-                this.bookingClass = BookingClass.ECONOMY;
-            } else {
-                throw new IllegalArgumentException("Invalid booking class choice!");
-            }
-        }
-
-        public BookingClass getBookingClass() {
-            return bookingClass;
-        }
-    }
+}
 class Trip {
 
     private String TicketNumber;
